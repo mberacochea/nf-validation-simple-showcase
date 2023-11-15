@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/mberacochea/cowsay/main/assets/schema_input.json",
+    "title": "cowsay - params.say_csv_file schema",
+    "description": "Schema for the file provided with params.input",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "say": {
+                "type": "string",
+                "errorMessage": "What should we say?"
+            },
+            "who": {
+                "type": "string",
+                "enum": ["cow", "dragon", "tux"],
+                "meta": [
+                    "who"
+                ]
+            }
+        },
+        "required": [
+            "say",
+            "who"
+        ]
+    }
+}

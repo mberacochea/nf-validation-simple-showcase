@@ -5,14 +5,14 @@ process COWSAY {
     publishDir "${params.outdir}"
 
     input:
-    val(say)
+    tuple val(meta), val(say)
 
     output:
-
-    path("say.txt"), emit: say
+    path("*_say.txt"), emit: say
 
     script:
+    def who_arg = meta.who != "cow" ? "-f ${meta.who}" : "" 
     """
-    echo "${say}" | cowsay > say.txt
+    echo "${say}" | cowsay $who_arg > ${meta.who}_say.txt
     """
 }
